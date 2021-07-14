@@ -7,7 +7,7 @@ import firebaseConfig from '../../firebase.config';
 import { useState } from 'react';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
-import { createUserWithEmailAndPassword, handleFbSignIn, handleGoogleSignIn, handleSignOut, initializeLoginFramework, signInWithEmailAndPassword } from './LoginManager';
+import { createUserWithEmailAndPassword, handleGoogleSignIn, handleSignOut, initializeLoginFramework, signInWithEmailAndPassword } from './LoginManager';
 
 
 
@@ -25,6 +25,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 initializeLoginFramework();
+
 const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 const history= useHistory();
 const location = useLocation();
@@ -37,12 +38,12 @@ let { from } = location.state || { from: { pathname: "/" } };
     })
   }
 
-  const fbSignIn = () => {
-    handleFbSignIn()
-    .then(res => {
-      handleResponse(res, true);
-    })
-  }
+  // const fbSignIn = () => {
+  //   handleFbSignIn()
+  //   .then(res => {
+  //     handleResponse(res, true);
+  //   })
+  // }
 
   const signOut = () => {
     handleSignOut()
@@ -54,6 +55,7 @@ let { from } = location.state || { from: { pathname: "/" } };
   const handleResponse = (res, redirect) =>{
     setUser(res);
         setLoggedInUser(res);
+        localStorage.setItem("userId", JSON.stringify(res));
         if(redirect){
           history.replace(from);
         }
@@ -94,8 +96,7 @@ let { from } = location.state || { from: { pathname: "/" } };
      }
      e.preventDefault();
   }
-
-  
+     
     
   return (
     <div className="text-center border">

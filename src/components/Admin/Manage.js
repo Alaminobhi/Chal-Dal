@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Manage = (props) => {
     const {name, price, _id} = props.item;

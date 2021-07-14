@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Admin = () => {
-    const { register, handleSubmit, watch, error} = useForm();
+    const { register, handleSubmit} = useForm();
 
     const [imgURL, setImgURL] = useState(null);
     const onSubmit = data => {

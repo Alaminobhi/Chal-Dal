@@ -1,11 +1,16 @@
 import React from 'react';
 
-const ProductList = (props) => {
-    const {price, name} = props.product;
+const ProductList = ({product}) => {
+    const {price, category, quantity, name} = product;
     return (
-        <div className="row border">
-            <p className="col-6">{name}</p>
-            <p className="col-6">{price}</p>
+        <div>
+            <div className="row">
+                <p className="col-6">{name}</p>
+                <p className="col">{category}</p>
+                <p className="col">{quantity}</p>
+                <p className="col">৳ {price}</p>
+            </div>
+            <hr/>
         </div>
     );
 };

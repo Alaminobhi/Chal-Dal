@@ -36,15 +36,13 @@ export const handleGoogleSignIn = () =>{
     .auth()
     .signInWithPopup(fbProvider)
     .then((res) => {
-      var credential = res.credential;
+      
       var user = res.user;
       user.success = true;
      return user;
     })
     .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      var email = error.email;
+    console.log(error);
     });
   }
 
